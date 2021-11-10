@@ -1,10 +1,23 @@
 import { Module } from '@nestjs/common';
-import { StudentsModule } from './students/students.module';
-import { TeachersModule } from './teachers/teachers.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { SubjectsModule } from './subjects/subjects.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [StudentsModule, TeachersModule, SubjectsModule],
+  imports: [
+    SubjectsModule,
+    UsersModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'academic',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+  ],
   controllers: [],
   providers: [],
 })
