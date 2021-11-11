@@ -5,12 +5,12 @@ export class Subject {
   @PrimaryGeneratedColumn('increment')
   id: string;
 
-  @Column('un')
+  @Column({ unique: true, type: 'varchar', length: 8 })
   code: string;
 
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   course: string;
 }
