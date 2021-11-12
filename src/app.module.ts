@@ -16,6 +16,7 @@ import { UsersModule } from './users/users.module';
       database: 'academic',
       autoLoadEntities: true,
       synchronize: true,
+      logging: true,
     }),
   ],
   controllers: [],
