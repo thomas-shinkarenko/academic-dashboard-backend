@@ -11,7 +11,7 @@ export class CreateSubjectService {
   async createSubject(createSubjectDto: CreateSubjectDto): Promise<Subject> {
     try {
       const { code } = createSubjectDto;
-      const found = await this.subjectsRepository.findSubjectByCode(code);
+      const found = await this.subjectsRepository.checkSubjectExist(code);
       console.log(found);
       if (found) {
         throw new Error('Subject already exists');
