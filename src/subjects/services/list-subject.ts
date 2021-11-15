@@ -11,7 +11,6 @@ export class ListSubjectsService {
   async listSubjects(listSubjectsDto: ListSubjectsDto): Promise<Subject[]> {
     try {
       const found = await this.subjectsRepository.listSubjects(listSubjectsDto);
-      console.log(found);
       if (found.length === 0) {
         throw new Error('Not found');
       }

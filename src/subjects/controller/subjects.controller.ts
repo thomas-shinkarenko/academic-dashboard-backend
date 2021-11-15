@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
   Query,
@@ -53,10 +54,13 @@ export class SubjectsController {
 
   @Put('/:code')
   updateSubject(
-    @Param() code: string,
+    @Param() findSubjectDto: FindSubjectDto,
     @Body() updateSubject: UpdateSubjectDto,
-  ): Promise<UpdateSubjectDto> {
-    console.log('controller', code, updateSubject);
-    return this.updateSubjectService.updateSubject(code, updateSubject);
+  ): Promise<any> {
+    console.log('controller', findSubjectDto, updateSubject);
+    return this.updateSubjectService.updateSubject(
+      findSubjectDto,
+      updateSubject,
+    );
   }
 }
