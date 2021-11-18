@@ -7,12 +7,11 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     SubjectsModule,
     TypeOrmModule.forRoot({
-      // type: 'postgres',
+      type: 'mysql',
       host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'academic',
+      username: 'root',
+      password: 'mysqlshinka',
+      database: 'academic_dashboard',
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
