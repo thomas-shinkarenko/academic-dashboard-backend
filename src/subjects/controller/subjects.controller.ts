@@ -8,6 +8,7 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateSubjectDto } from '../dto/create-subject.dto';
 import { Subject } from '../subject.entity';
@@ -20,8 +21,10 @@ import { FindSubjectDto } from '../dto/find-subject-code.dto';
 import { DeleteSubjectService } from '../services/delete-subject';
 import { UpdateSubjectDto } from '../dto/update-subject.dto';
 import { UpdateSubjectService } from '../services/update-subject';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('subjects')
+@UseGuards(AuthGuard())
 export class SubjectsController {
   constructor(
     private subjectService: SubjectsService,

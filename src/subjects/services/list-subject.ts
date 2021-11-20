@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Subject } from '../subject.entity';
 import { SubjectsRepository } from '../repository/subjects.repository';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST } from '../../shared/error-messages';
 import { ListSubjectsDto } from '../dto/list-subject-code.dto';
 
 @Injectable()

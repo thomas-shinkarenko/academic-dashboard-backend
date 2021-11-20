@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateSubjectDto } from '../dto/create-subject.dto';
 import { Subject } from '../subject.entity';
 import { SubjectsRepository } from '../repository/subjects.repository';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST } from '../../shared/error-messages';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class CreateSubjectService {
@@ -12,7 +13,6 @@ export class CreateSubjectService {
     try {
       const { code } = createSubjectDto;
       const found = await this.subjectsRepository.checkSubjectExist(code);
-      console.log(found);
       if (found) {
         throw new Error('Subject already exists');
       }

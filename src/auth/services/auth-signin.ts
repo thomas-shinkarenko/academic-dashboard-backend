@@ -2,7 +2,7 @@ import { AuthDto } from '../dto/auth-dto';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from '../dto/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST } from '../../shared/error-messages';
 import { UsersRepository } from '../repository/users.repository';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 

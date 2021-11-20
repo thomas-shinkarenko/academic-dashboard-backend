@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST } from '../../shared/error-messages';
 import { SubjectsRepository } from '../repository/subjects.repository';
 import { Subject } from '../subject.entity';
 

@@ -12,9 +12,7 @@ export class SubjectsRepository extends Repository<Subject> {
   }
 
   async updateSubject(updateSubjectDto: UpdateSubjectDto): Promise<any> {
-    console.log('us updated', updateSubjectDto);
     const subject = await this.save(updateSubjectDto);
-    console.log('return su', subject);
     return subject;
   }
 
@@ -23,7 +21,7 @@ export class SubjectsRepository extends Repository<Subject> {
     return deleted;
   }
 
-  async checkSubjectExist(code: string): Promise<any> {
+  async checkSubjectExist(code: string): Promise<{ code: string }> {
     const found = await this.createQueryBuilder('subject')
       .where('subject.code = :code', { code: code })
       .select(['subject.code'])

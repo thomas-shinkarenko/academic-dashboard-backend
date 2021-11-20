@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST } from '../../shared/error-messages';
 import { AuthDto } from '../dto/auth-dto';
 import { UsersRepository } from '../repository/users.repository';
 import * as bcrypt from 'bcrypt';
