@@ -8,12 +8,9 @@ import { SubjectsModule } from '../subjects.module';
 import { ListSubjectsService } from './list-subject';
 
 describe('SubjectsService', () => {
-  let createSubjectService: CreateSubjectService;
   let listSubjectsService: ListSubjectsService;
 
   const mockRepository = {
-    create: jest.fn(),
-    save: jest.fn(),
     createQueryBuilder: jest.fn(),
   };
 
@@ -36,18 +33,10 @@ describe('SubjectsService', () => {
       ],
       providers: [SubjectsRepository],
     }).compile();
-    createSubjectService =
-      module.get<CreateSubjectService>(CreateSubjectService);
     listSubjectsService = module.get<ListSubjectsService>(ListSubjectsService);
   });
 
-  beforeEach(() => {
-    mockRepository.create.mockReset();
-    mockRepository.save.mockReset();
-  });
-
   it('should be defined', () => {
-    expect(createSubjectService).toBeDefined();
     expect(listSubjectsService).toBeDefined();
   });
 
