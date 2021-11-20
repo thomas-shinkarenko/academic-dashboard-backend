@@ -10,11 +10,9 @@ export class AuthSignupService {
 
   async signup(authDto: AuthDto): Promise<void> {
     try {
-      console.log('signup', authDto.username);
       const found = await this.usersRepository.checkUserAlreadyExists(
         authDto.username,
       );
-      console.log('serv signup', found);
 
       if (found) {
         throw new Error('User already exists');

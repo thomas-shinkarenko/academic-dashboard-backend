@@ -3,7 +3,6 @@ import { CreateSubjectDto } from '../dto/create-subject.dto';
 import { Subject } from '../subject.entity';
 import { SubjectsRepository } from '../repository/subjects.repository';
 import { BAD_REQUEST } from '../../shared/error-messages';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class CreateSubjectService {

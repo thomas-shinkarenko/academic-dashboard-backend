@@ -16,9 +16,7 @@ export class AuthSignInService {
   async signIn(authDto: AuthDto): Promise<{ token: string }> {
     try {
       const { username, password } = authDto;
-      console.log('signin user', username);
       const user = await this.usersRepository.findUser(username);
-      console.log('signin found a', user);
       if (!user) {
         throw new Error('User does not exist');
       }

@@ -10,13 +10,10 @@ export class UsersRepository extends Repository<User> {
   }
 
   async checkUserAlreadyExists(username: string): Promise<any> {
-    console.log('opa');
-    console.log('check username', username);
     const found = await this.createQueryBuilder('user')
       .where('user.username = :username', { username: username })
       .select(['user.username'])
       .getOne();
-    console.log('repo check', found);
     return found;
   }
 

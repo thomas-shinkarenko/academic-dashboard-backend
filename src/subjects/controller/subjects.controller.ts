@@ -13,7 +13,6 @@ import {
 import { CreateSubjectDto } from '../dto/create-subject.dto';
 import { Subject } from '../subject.entity';
 import { CreateSubjectService } from '../services/create-subject';
-import { SubjectsService } from '../services/subjects.service';
 import { ListSubjectsService } from '../services/list-subject';
 import { ListSubjectsDto } from '../dto/list-subject-code.dto';
 import { FindSubjectService } from '../services/find-subject';
@@ -27,7 +26,6 @@ import { AuthGuard } from '@nestjs/passport';
 @UseGuards(AuthGuard())
 export class SubjectsController {
   constructor(
-    private subjectService: SubjectsService,
     private createSubjectService: CreateSubjectService,
     private listSubjectsService: ListSubjectsService,
     private findSubjectService: FindSubjectService,
@@ -57,13 +55,9 @@ export class SubjectsController {
 
   @Put('/:code')
   updateSubject(
-    @Param() findSubjectDto: FindSubjectDto,
+    @Param('code') code: string,
     @Body() updateSubject: UpdateSubjectDto,
-  ): Promise<any> {
-    console.log('controller', findSubjectDto, updateSubject);
-    return this.updateSubjectService.updateSubject(
-      findSubjectDto,
-      updateSubject,
-    );
+  ): Promise<void> {
+    return this.updateSubjectService.updateSubject(code, updateSubject);
   }
 }

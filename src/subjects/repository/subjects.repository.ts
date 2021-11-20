@@ -11,7 +11,9 @@ export class SubjectsRepository extends Repository<Subject> {
     return;
   }
 
-  async updateSubject(updateSubjectDto: UpdateSubjectDto): Promise<any> {
+  async updateSubject(
+    updateSubjectDto: UpdateSubjectDto,
+  ): Promise<UpdateSubjectDto> {
     const subject = await this.save(updateSubjectDto);
     return subject;
   }

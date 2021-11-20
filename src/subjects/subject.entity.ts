@@ -1,8 +1,11 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'subjects' })
 export class Subject {
-  @Column({ primary: true, type: 'char', length: 8 })
+  @PrimaryGeneratedColumn('increment')
+  id: number;
+
+  @Column({ length: 8 })
   code: string;
 
   @Column()

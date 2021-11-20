@@ -8,23 +8,20 @@ export class UpdateSubjectService {
   constructor(private subjectsRepository: SubjectsRepository) {}
 
   async updateSubject(
-    findSubjectDto: FindSubjectDto,
+    code: string,
     updateSubject: UpdateSubjectDto,
-  ): Promise<any> {
+  ): Promise<void> {
     try {
-      const subject = await this.subjectsRepository.findSubjectByCode(
-        findSubjectDto.code,
-      );
-      const subjectExist = await this.subjectsRepository.findSubjectByCode(
-        updateSubject.code,
-      );
-
-      console.log('aaaaaaa', subject.code);
-      console.log('exists', subjectExist);
+      const subject = await this.subjectsRepository.findSubjectByCode(code);
 
       if (!subject) {
         throw new Error('Not found');
       }
+
+      const subjectExist = await this.subjectsRepository.findSubjectByCode(
+        updateSubject.code,
+      );
+
       if (subjectExist) {
         throw new Error('Subject already exists');
       }
@@ -32,8 +29,6 @@ export class UpdateSubjectService {
       subject.code = updateSubject.code;
       subject.name = updateSubject.name;
       subject.course = updateSubject.course;
-
-      console.log('after put', subject);
 
       await this.subjectsRepository.updateSubject(subject);
       return;

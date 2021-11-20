@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import TestUtil from '../../common/testUtil';
 import { Subject } from '../subject.entity';
 import { SubjectsRepository } from '../repository/subjects.repository';
 import { SubjectsModule } from '../subjects.module';
