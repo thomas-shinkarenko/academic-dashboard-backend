@@ -31,7 +31,7 @@ export class SubjectsRepository extends Repository<Subject> {
     return found;
   }
 
-  async findSubjectByCode(code: string): Promise<any> {
+  async findSubjectByCode(code: string): Promise<Subject> {
     const found = await this.createQueryBuilder('subject')
       .where('subject.code = :code', { code: code })
       .getOne();

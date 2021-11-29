@@ -7,7 +7,7 @@ import { Subject } from '../subject.entity';
 export class DeleteSubjectService {
   constructor(private subjectsRepository: SubjectsRepository) {}
 
-  async deleteSubject(code: string): Promise<any> {
+  async deleteSubject(code: string): Promise<void> {
     try {
       const result = await this.subjectsRepository.deleteSubject(code);
 

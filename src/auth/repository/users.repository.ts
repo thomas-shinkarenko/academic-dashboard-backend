@@ -9,7 +9,9 @@ export class UsersRepository extends Repository<User> {
     return;
   }
 
-  async checkUserAlreadyExists(username: string): Promise<any> {
+  async checkUserAlreadyExists(
+    username: string,
+  ): Promise<{ username: string }> {
     const found = await this.createQueryBuilder('user')
       .where('user.username = :username', { username: username })
       .select(['user.username'])
@@ -17,7 +19,7 @@ export class UsersRepository extends Repository<User> {
     return found;
   }
 
-  async findUser(username: string): Promise<any> {
+  async findUser(username: string): Promise<User> {
     const found = await this.createQueryBuilder('user')
       .where('user.username = :username', { username: username })
       .getOne();
