@@ -7,7 +7,7 @@ import { UpdateSubjectDto } from '../dto/update-subject.dto';
 @EntityRepository(Subject)
 export class SubjectsRepository extends Repository<Subject> {
   async createSubject(createSubjectDto: CreateSubjectDto): Promise<void> {
-    await this.save(createSubjectDto);
+    await this.insert(createSubjectDto);
     return;
   }
 

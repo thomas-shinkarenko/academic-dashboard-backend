@@ -6,3 +6,10 @@ export const BAD_REQUEST = (message: string) => {
     HttpStatus.BAD_REQUEST,
   );
 };
+
+export const DUPLICATED_KEY = (message: string) => {
+  throw new HttpException(
+    message ?? 'Internal Server Error',
+    HttpStatus.CONFLICT,
+  );
+};

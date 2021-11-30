@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BAD_REQUEST } from 'src/shared/error-messages';
+import { BAD_REQUEST, DUPLICATED_KEY } from 'src/shared/error-messages';
 import { CreateTeacherDto } from '../dto/create-teacher.dto';
 import { TeachersRepository } from '../repository/teachers.repository';
 import { Teacher } from '../teacher.entity';
@@ -23,7 +23,8 @@ export class CreateTeacherService {
       await this.teachersRepository.createTeacher(createTeacherDto);
       return;
     } catch (error) {
-      return BAD_REQUEST(error?.message);
+      console.log(error);
+      return DUPLICATED_KEY(error?.message);
     }
   }
 }

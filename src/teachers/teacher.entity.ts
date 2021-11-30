@@ -1,10 +1,4 @@
-import {
-  IsEmail,
-  IsMobilePhone,
-  IsNumber,
-  Length,
-  MaxLength,
-} from 'class-validator';
+import { IsEmail, IsMobilePhone, Length, MaxLength } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'teacher' })
@@ -16,7 +10,7 @@ export class Teacher {
   name: string;
 
   @MaxLength(12)
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   document_rg: string;
 
   @Length(2)
@@ -24,14 +18,14 @@ export class Teacher {
   document_rg_expeditor: string;
 
   @Length(2)
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   document_cpf: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   @IsMobilePhone('pt-BR')
   phone: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   @IsEmail()
   email: string;
 

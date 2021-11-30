@@ -1,21 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { BAD_REQUEST } from 'src/shared/error-messages';
-import { FindTeacherDtoByRG } from '../dto/find-teacher.dto';
+import { ListTeachersDto } from '../dto/list-teacher.dto';
 import { TeachersRepository } from '../repository/teachers.repository';
 import { Teacher } from '../teacher.entity';
 
 @Injectable()
-export class FindTeacherService {
+export class ListTeachersService {
   constructor(private teachersRepository: TeachersRepository) {}
 
-  async findTeacher(findTeacherDtoByRG: FindTeacherDtoByRG): Promise<Teacher> {
+  async listTeachers(listTeachersDto: ListTeachersDto): Promise<Teacher[]> {
     try {
-      const found = await this.teachersRepository.findTeacherByRG(
-        findTeacherDtoByRG.document_rg,
-      );
-
-      if (!found) {
-        throw new Error('Professor não encontrado');
+      const found = await this.teachersRepository.listTeachers(listTeachersDto);
+      if (found.length === 0) {
+        throw new Error('Nenhum professor foi encontrado');
       }
 
       return found;

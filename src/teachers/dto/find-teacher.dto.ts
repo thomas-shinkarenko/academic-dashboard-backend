@@ -1,3 +1,6 @@
+import { IsNotEmpty } from 'class-validator';
+
 export class FindTeacherDtoByRG {
-  rg: string;
+  @IsNotEmpty()
+  document_rg: string;
 }
