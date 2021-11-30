@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
-import { ControllerController } from './controller/controller.controller';
+import { ControllerController } from './controller/teacher.controller';
 import { TeachersRepository } from './repository/teachers.repository';
 import { CreateTeacherService } from './services/create-teacher';
 import { DeleteTeacherService } from './services/delete-teacher';
