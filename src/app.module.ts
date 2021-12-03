@@ -9,10 +9,10 @@ import { StudentsModule } from './students/students.module';
   imports: [
     SubjectsModule,
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: 'localhost',
-      username: 'root',
-      password: 'mysqlshinka',
+      username: 'postgres',
+      password: 'postgres',
       database: 'academic_dashboard',
       autoLoadEntities: true,
       synchronize: true,
